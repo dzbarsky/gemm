@@ -37,13 +37,13 @@ std = [
   "gemm-c64/std",
   "gemm-f16?/std",
 ]
-nightly = [
-  "gemm-common/nightly",
-  "gemm-f32/nightly",
-  "gemm-f64/nightly",
-  "gemm-c32/nightly",
-  "gemm-c64/nightly",
-  "gemm-f16?/nightly",
+x86-v4 = [
+  "gemm-common/x86-v4",
+  "gemm-f32/x86-v4",
+  "gemm-f64/x86-v4",
+  "gemm-c32/x86-v4",
+  "gemm-c64/x86-v4",
+  "gemm-f16?/x86-v4",
 ]
 experimental-apple-amx = [
     "gemm-common/experimental-apple-amx",

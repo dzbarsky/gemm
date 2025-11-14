@@ -1011,7 +1011,7 @@ macro_rules! gemm_def {
         fn init_gemm_fn() -> GemmTy {
             #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
             {
-                #[cfg(feature = "nightly")]
+                #[cfg(feature = "x86-v4")]
                 if $crate::feature_detected!("avx512f") {
                     return avx512f::gemm_basic;
                 }
@@ -1078,7 +1078,7 @@ macro_rules! gemm_def {
 
         #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
         $crate::__inject_mod!(fma, $ty, 4 * $multiplier, V3, false);
-        #[cfg(all(feature = "nightly", any(target_arch = "x86", target_arch = "x86_64")))]
+        #[cfg(all(feature = "x86-v4", any(target_arch = "x86", target_arch = "x86_64")))]
         $crate::__inject_mod!(avx512f, $ty, 8 * $multiplier, V4, false);
 
         #[cfg(target_arch = "aarch64")]
@@ -1120,7 +1120,7 @@ macro_rules! gemm_cplx_def {
         fn init_gemm_cplx_fn() -> GemmCplxTy {
             #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
             {
-                #[cfg(feature = "nightly")]
+                #[cfg(feature = "x86-v4")]
                 if $crate::feature_detected!("avx512f") {
                     return avx512f_cplx::gemm_basic_cplx;
                 }
@@ -1166,7 +1166,7 @@ macro_rules! gemm_cplx_def {
 
         #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
         $crate::__inject_mod_cplx!(fma, $ty, 2 * $multiplier, V3);
-        #[cfg(all(feature = "nightly", any(target_arch = "x86", target_arch = "x86_64")))]
+        #[cfg(all(feature = "x86-v4", any(target_arch = "x86", target_arch = "x86_64")))]
         $crate::__inject_mod_cplx!(avx512f, $ty, 4 * $multiplier, V4);
     };
 }

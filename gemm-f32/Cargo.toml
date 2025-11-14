@@ -22,6 +22,6 @@ gemm-common = { version = "0.18.2", default-features = false, path = "../gemm-co
 [features]
 default = ["std", "rayon"]
 std = ["dyn-stack/std", "gemm-common/std"]
-nightly = ["gemm-common/nightly"]
+x86-v4 = ["gemm-common/x86-v4"]
 experimental-apple-amx = ["std", "gemm-common/experimental-apple-amx"]
 rayon = ["std", "gemm-common/rayon"]

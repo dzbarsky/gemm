@@ -292,7 +292,7 @@ pub mod fma {
     }
 }
 
-#[cfg(all(feature = "nightly", any(target_arch = "x86", target_arch = "x86_64")))]
+#[cfg(all(feature = "x86-v4", any(target_arch = "x86", target_arch = "x86_64")))]
 pub mod avx512f {
     pub mod f32 {
         #[cfg(target_arch = "x86")]

@@ -19,7 +19,7 @@ num-complex = { workspace = true, default-features = false }
 half = { workspace = true, default-features = false, optional=true }
 rayon = { workspace = true, optional = true }
 paste = { workspace = true }
-pulp = { version = "0.21.3", default-features = false }
+pulp = { version = "0.22.0", default-features = false }
 bytemuck = "1.14"
 libm = "0.2.11"
 
@@ -27,9 +27,13 @@ libm = "0.2.11"
 sysctl = { workspace = true, optional = true }
 
 [features]
-default = ["std", "rayon", "f16"]
+default = [
+  "std",
+  "rayon",
+  "f16",
+]
 std = ["pulp/std", "dyn-stack/std", "once_cell/std", "sysctl"]
-nightly = ["pulp/nightly"]
+x86-v4 = ["pulp/x86-v4"]
 wasm-simd128-enable = []
 experimental-apple-amx = ["std"]
 rayon = ["dep:rayon", "std"]

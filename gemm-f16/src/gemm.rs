@@ -57,7 +57,7 @@ unsafe fn pack_generic_inner_loop<
                 }
             }
 
-            #[cfg(feature = "nightly")]
+            #[cfg(feature = "x86-v4")]
             if id == TypeId::of::<V4>() {
                 let quarter_simd = V3Half::try_new().unwrap();
                 let half_simd = V3::try_new().unwrap_unchecked();
@@ -799,7 +799,7 @@ pub mod f16 {
     fn init_gemm_fn() -> GemmTy {
         #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
         {
-            #[cfg(feature = "nightly")]
+            #[cfg(feature = "x86-v4")]
             if gemm_common::feature_detected!("avx512f") {
                 return avx512f::gemm_basic;
             }
@@ -1126,7 +1126,7 @@ pub mod f16 {
         }
     }
 
-    #[cfg(all(feature = "nightly", any(target_arch = "x86", target_arch = "x86_64")))]
+    #[cfg(all(feature = "x86-v4", any(target_arch = "x86", target_arch = "x86_64")))]
     mod avx512f {
         use super::*;
         use gemm_common::simd::V4;

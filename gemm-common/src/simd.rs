@@ -535,7 +535,7 @@ mod x86 {
     #[derive(Copy, Clone)]
     pub struct Fma;
 
-    #[cfg(feature = "nightly")]
+    #[cfg(feature = "x86-v4")]
     #[derive(Copy, Clone)]
     pub struct Avx512f;
 
@@ -563,7 +563,7 @@ mod x86 {
         }
     }
 
-    #[cfg(feature = "nightly")]
+    #[cfg(feature = "x86-v4")]
     impl Simd for Avx512f {
         #[inline]
         #[target_feature(enable = "avx512f")]
@@ -594,7 +594,7 @@ mod x86 {
         }
     }
 
-    #[cfg(feature = "nightly")]
+    #[cfg(feature = "x86-v4")]
     #[cfg(feature = "f16")]
     pulp::simd_type! {
         pub struct V4 {
@@ -629,7 +629,7 @@ mod x86 {
         }
     }
 
-    #[cfg(feature = "nightly")]
+    #[cfg(feature = "x86-v4")]
     #[cfg(not(feature = "f16"))]
     pulp::simd_type! {
         pub struct V4 {
@@ -1079,7 +1079,7 @@ mod x86 {
         }
     }
 
-    #[cfg(feature = "nightly")]
+    #[cfg(feature = "x86-v4")]
     unsafe impl MixedSimd<c32, c32, c32, c32> for V4 {
         const SIMD_WIDTH: usize = 8;
 
@@ -1196,7 +1196,7 @@ mod x86 {
         }
     }
 
-    #[cfg(feature = "nightly")]
+    #[cfg(feature = "x86-v4")]
     unsafe impl MixedSimd<c64, c64, c64, c64> for V4 {
         const SIMD_WIDTH: usize = 4;
 
@@ -1508,7 +1508,7 @@ mod x86 {
         }
     }
 
-    #[cfg(feature = "nightly")]
+    #[cfg(feature = "x86-v4")]
     impl Simd for V4 {
         #[inline(always)]
         unsafe fn vectorize<F: NullaryFnOnce>(f: F) -> F::Output {
@@ -1516,7 +1516,7 @@ mod x86 {
         }
     }
 
-    #[cfg(feature = "nightly")]
+    #[cfg(feature = "x86-v4")]
     #[cfg(feature = "f16")]
     unsafe impl MixedSimd<f16, f16, f16, f32> for V4 {
         const SIMD_WIDTH: usize = 16;
@@ -1619,7 +1619,7 @@ mod x86 {
         }
     }
 
-    #[cfg(feature = "nightly")]
+    #[cfg(feature = "x86-v4")]
     unsafe impl MixedSimd<f32, f32, f32, f32> for V4 {
         const SIMD_WIDTH: usize = 16;
 
@@ -1717,7 +1717,7 @@ mod x86 {
         }
     }
 
-    #[cfg(feature = "nightly")]
+    #[cfg(feature = "x86-v4")]
     unsafe impl MixedSimd<f64, f64, f64, f64> for V4 {
         const SIMD_WIDTH: usize = 8;
 
